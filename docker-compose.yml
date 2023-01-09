@@ -1,0 +1,28 @@
+version: "3.4"
+services:
+
+    backend:
+        build:
+            context: ./sengun_hukuk_api/
+            dockerfile: ./DockerFile
+        container_name: sengun-backend
+        restart: always
+        ports:
+            - 8011:8000
+        env_file: ./.env
+        depends_on:
+            - sengun-db
+
+    sengun-db:
+        image: 'postgres'
+        container_name: sengun-db
+        restart: always
+        env_file: ./.env
+        ports:
+            - 8010:5432
+        volumes:
+            - postgre_data:/var/lib/postgresql/data
+
+    
+volumes:
+    postgre_data: { }

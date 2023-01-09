@@ -1,0 +1,8 @@
+django
+djangorestframework
+markdown
+django-filter
+psycopg2
+requests_toolbelt
+Pillow
+firebase-admin
