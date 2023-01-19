@@ -71,3 +71,11 @@ def getLawyers(request):
     serializer = LawyerSerializer(lawyers, many=True)
 
     return Response(serializer.data)
+
+@api_view(['GET'])
+def getReferences(request):
+    # order by descending 
+    references = Reference.objects.all()
+    serializer = ReferenceSerializer(references, many=True)
+
+    return Response(serializer.data)

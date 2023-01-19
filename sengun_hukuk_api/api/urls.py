@@ -9,4 +9,5 @@ urlpatterns = [
     path('getOurServices/',views.getOurServices),
     path('getArticlesAndNews/',views.getArticleAndNews),
     path('getLawyers/',views.getLawyers),
+    path('getReferences/',views.getReferences),
 ]

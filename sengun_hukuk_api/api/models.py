@@ -137,3 +137,12 @@ class Lawyer(models.Model):
         verbose_name_plural = 'Lawyer'
     def __str__(self):
         return self.name
+
+class Reference(models.Model):
+    id = models.AutoField(primary_key=True)
+    image = models.CharField(max_length=256)
+    class Meta:
+        verbose_name = 'Reference'
+        verbose_name_plural = 'Reference'
+    def __str__(self):
+        return self.image

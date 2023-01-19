@@ -43,3 +43,9 @@ class LawyerSerializer(ModelSerializer):
     class Meta:
         model = Lawyer
         fields = '__all__'
+
+class ReferenceSerializer(ModelSerializer):
+    
+    class Meta:
+        model = Reference
+        fields = '__all__'
