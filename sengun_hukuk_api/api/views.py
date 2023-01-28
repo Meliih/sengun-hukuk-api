@@ -10,6 +10,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .serializers import *
 from .models import *
+from django.db.models import Q
 
 import random
 import string
@@ -77,5 +78,13 @@ def getReferences(request):
     # order by descending 
     references = Reference.objects.all()
     serializer = ReferenceSerializer(references, many=True)
+
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getDavaById(request, id):
+
+    dava = Dava.objects.filter(Q(davaci=id) | Q(davali=id))
+    serializer = DavaSerializer(dava, many=True)
 
     return Response(serializer.data)

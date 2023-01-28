@@ -10,4 +10,5 @@ urlpatterns = [
     path('getArticlesAndNews/',views.getArticleAndNews),
     path('getLawyers/',views.getLawyers),
     path('getReferences/',views.getReferences),
+    path('getDavaById/<str:id>/',views.getDavaById),
 ]
