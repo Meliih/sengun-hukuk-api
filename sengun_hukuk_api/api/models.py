@@ -21,8 +21,6 @@ class Dava(models.Model):
     id=models.AutoField(primary_key=True)
     raf_no=models.CharField(max_length=50)
     arsiv_no=models.IntegerField()
-    davaci=models.IntegerField()
-    davali=models.IntegerField()
     yer=models.CharField(max_length=50)
     daire=models.CharField(max_length=40)
     mahkeme=models.CharField(max_length=100)
@@ -40,13 +38,24 @@ class Dava(models.Model):
 class Davaci(models.Model):
     id=models.AutoField(primary_key=True)
     dava_id = models.IntegerField()
-    davaci_id = models.IntegerField()
+    user_id = models.IntegerField()
    
     class Meta:
         verbose_name = 'Davaci'
         verbose_name_plural = 'Davaci'
     def __str__(self):
-        return str(self.davaci_id)
+        return str(self.dava_id)
+
+class Davali(models.Model):
+    id=models.AutoField(primary_key=True)
+    dava_id = models.IntegerField()
+    user_id = models.IntegerField()
+   
+    class Meta:
+        verbose_name = 'Davali'
+        verbose_name_plural = 'Davali'
+    def __str__(self):
+        return str(self.dava_id)
 
 class Icra(models.Model):
     id=models.AutoField(primary_key=True)

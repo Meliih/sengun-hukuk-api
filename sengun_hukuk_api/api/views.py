@@ -84,7 +84,14 @@ def getReferences(request):
 @api_view(['GET'])
 def getDavaById(request, id):
 
-    dava = Dava.objects.filter(Q(davaci=id) | Q(davali=id))
-    serializer = DavaSerializer(dava, many=True)
+    #dava = Dava.objects.filter(Q(dava=id) | Q(dava=id))
+    davaci_user = User.objects.raw("select api_user.id,api_user.name,api_user.tc,api_user.email,api_user.birth_date,api_user.phone,api_user.password  from api_dava join api_davaci on api_dava.id=api_davaci.dava_id join api_user on api_user.id=api_davaci.user_id;")
+    dava = Dava.objects.filter(id=id)
+    davali_user = User.objects.raw("select api_user.id,api_user.name,api_user.tc,api_user.email,api_user.birth_date,api_user.phone,api_user.password  from api_dava join api_davali on api_dava.id=api_davali.dava_id join api_user on api_user.id=api_davali.user_id;")
 
-    return Response(serializer.data)
+    serializer = UserSerializer(davaci_user, many=True)
+    serializer2 = DavaSerializer(dava, many=True)
+    serializer3 = UserSerializer(davali_user, many=True)
+
+    return Response(serializer.data + serializer2.data + serializer3.data,)
+

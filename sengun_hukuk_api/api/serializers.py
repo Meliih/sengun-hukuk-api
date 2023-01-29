@@ -49,3 +49,9 @@ class ReferenceSerializer(ModelSerializer):
     class Meta:
         model = Reference
         fields = '__all__'
+
+class UserSerializer(ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = '__all__'
